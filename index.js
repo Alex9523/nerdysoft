@@ -4,8 +4,7 @@ $(document).ready(()=>{
     const display = $("#display");
     const form = $("#form");
     const todoUserInput = $("#todoUserInput");
-    const message = $("#message");
-    message.hide();
+   
 
     const isEmpty = ()=>{
         if($('#display').children().length == 0)
@@ -28,10 +27,12 @@ $(document).ready(()=>{
         todoUserInput.val('');
     }
 
-    const editTodo = (todo,todoID,editID)=>{
 
+    const editTodo = (todo,todoID,editID)=>{
+        
         let editBtn = $(`#${editID}`);
         editBtn.click(()=>{
+            if(todoUserInput.val().length > 0){
             fetch(`/${todo._id}`,{
                 method : "put",
                 headers : {
@@ -48,7 +49,8 @@ $(document).ready(()=>{
                     isEmpty();
                 }
             });
-     });
+        }else{alert("Поле пусте! Введіть завдання в поле")}
+        });
     }
 
     const deleteTodo = (todo,listItemID,deleteID)=>{
@@ -113,7 +115,6 @@ $(document).ready(()=>{
     }
 
     form.submit((e)=>{
-        
         e.preventDefault();
         fetch('/',{
             method : 'post',

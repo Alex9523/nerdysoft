@@ -23,7 +23,9 @@ app.get('/home',(req,res)=>{
     res.sendFile(path.join(__dirname,'/html/home.html'));
 });
 
-
+app.get('/resume',(req,res)=>{
+    res.sendFile(path.join(__dirname,'/html/resume.html'));
+});
 
 // read
 app.get('/getTodos',(req,res)=>{
