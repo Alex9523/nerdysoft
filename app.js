@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const path = require('path');
 const Joi = require('joi');
+const PORT = process.env.PORT || 3000
 
 const db = require("./db");
 const collection = "todo";
@@ -112,7 +113,7 @@ db.connect((err)=>{
     }
     
     else{
-        app.listen(3000,()=>{
+        app.listen(PORT,()=>{
             console.log('connected to database, app listening on port 3000');
         });
     }
